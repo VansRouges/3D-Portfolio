@@ -106,16 +106,22 @@ export function Island({
     canvas.addEventListener("pointerdown", handlePointerDown);
     canvas.addEventListener("pointerup", handlePointerUp);
     canvas.addEventListener("pointermove", handlePointerMove);
+    canvas.addEventListener("touchstart", handlePointerDown);
+    canvas.addEventListener("touchmove", handlePointerMove);
+    canvas.addEventListener("touchend", handlePointerUp);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 
     // Remove event listeners when component unmounts
     return () => {
       canvas.removeEventListener("pointerdown", handlePointerDown);
-      canvas.removeEventListener("pointerup", handlePointerUp);
-      canvas.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
+    canvas.removeEventListener("pointerup", handlePointerUp);
+    canvas.removeEventListener("pointermove", handlePointerMove);
+    canvas.removeEventListener("touchstart", handlePointerDown);
+    canvas.removeEventListener("touchmove", handlePointerMove);
+    canvas.removeEventListener("touchend", handlePointerUp);
+    window.removeEventListener("keydown", handleKeyDown);
+    window.removeEventListener("keyup", handleKeyUp);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
 
